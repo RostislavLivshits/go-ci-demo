@@ -35,6 +35,12 @@ jobs:
     #      restore-keys: |
     #       ${{ runner.os }}-go-
 
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: v1.59
+          args: --timeout 5m
+
       - name: Check formatting
         run: |
           unformatted=$(gofmt -l .)
